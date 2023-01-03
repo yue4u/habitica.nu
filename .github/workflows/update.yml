@@ -6,9 +6,6 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   update-gist:
     runs-on: ubuntu-latest
@@ -17,8 +14,13 @@ jobs:
     - uses: hustcer/setup-nu@e86ee5f76fca696b4b789f2883b9693c2fc087ba
       with:
         version: 0.73.0
+      env:
+        # default runner token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: nu habitica.nu
       env:
         GIST_ID: 5992940f1f9bbc9114f88d7877247331
         HABITICA_API_USER: ${{ secrets.HABITICA_API_USER }}
         HABITICA_API_KEY: ${{ secrets.HABITICA_API_KEY }}
+        # dedicated token with gist permission
+        GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
