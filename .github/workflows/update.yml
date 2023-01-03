@@ -1,0 +1,24 @@
+name: update
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *"
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  update-gist:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
+    - uses: hustcer/setup-nu@e86ee5f76fca696b4b789f2883b9693c2fc087ba
+      with:
+        version: 0.73.0
+    - run: nu habitica.nu
+      env:
+        GIST_ID: 5992940f1f9bbc9114f88d7877247331
+        HABITICA_API_USER: ${{ secrets.HABITICA_API_USER }}
+        HABITICA_API_KEY: ${{ secrets.HABITICA_API_KEY }}
