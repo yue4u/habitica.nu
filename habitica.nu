@@ -1,4 +1,4 @@
-fetch -H [
+http get -H [
     x-api-key $env.HABITICA_API_KEY
     x-api-user $env.HABITICA_API_USER
     x-client $"($env.HABITICA_API_USER)-habitica.nu"
