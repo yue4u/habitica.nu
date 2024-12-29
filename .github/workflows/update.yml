@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
-    - uses: hustcer/setup-nu@e86ee5f76fca696b4b789f2883b9693c2fc087ba
+    - uses: hustcer/setup-nu@0bf8d70d627bc80197a73473468c42c037351f6b
       with:
-        version: 0.73.0
+        version: "0.101.0"
       env:
         # default runner token
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
